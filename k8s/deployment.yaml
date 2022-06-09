@@ -43,7 +43,7 @@ kind: Deployment
 metadata:
   name: kubenews
 spec:
-  replicas: 20
+  replicas: 2
   selector:
     matchLabels:
       app: kubenews
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
         - name: kubenews
-          image: alansa/kube-news:v2
+          image: alansa/kube-news:v1
           env:
             - name: DB_PASSWORD
               value: "Kube#123"
@@ -76,4 +76,4 @@ spec:
     - port: 80
       targetPort: 8080
       nodePort: 30000
-  type: NodePort
+  type: LoadBalancer
